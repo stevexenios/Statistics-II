@@ -1,0 +1,4 @@
+""	"ID"	"County"	"State"	"LandArea"	"TotalPop"	"TotalSeriousCrime"	"PercHS"	"PercBach"	"PercPov"	"PercUnemp"	"PerCapInc"	"TotalInc"	"Region"	"PopDens"	"PerThousCrimes"
+"15"	53	"San_Francisco"	"CA"	47	723959	71234	78	35	9.7	5.6	28532	20656	4	15403.3829787234	98.3950748592116
+"44"	206	"Marin"	"CA"	520	230096	9460	91.9	44	3	4	37541	8638	4	442.492307692308	41.1132744593561
+"52"	246	"Davis"	"UT"	305	187941	6279	89.9	23.5	5.5	4.5	13394	2517	4	616.2	33.4094210417099

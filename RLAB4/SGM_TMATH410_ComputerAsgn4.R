@@ -95,3 +95,33 @@ abline(cdi4f.lm$coefficients, lwd=1)
 cdi4.lm = lm(PerThousCrimes~PerCapInc+PopDens+PercHS, data = cdi4.df)
 summary(cdi4.lm)
 ###################################################################################################
+#C9 Creating a Boxplot and Normal Quantile Plot of the Residuals of the Multiple Linear Regression
+par(mfrow=c(1,2), mar=c(3.5,3.5,3.5,0.5),mgp=c(2.25,0.5,0),las=1) # Creating a 1 By 2 layout for the 2 plots
+boxplot(cdi4.lm$residuals, ylab="Residual Values", col = "red", main="Residuals in the MultiLinear Regression")
+qqnorm(cdi4.lm$residuals, ylab="Residual Values", main = "Residual Quantiles", col = "blue", pch = 16)
+qqline(cdi4.lm$residuals)
+###################################################################################################
+#C10 Finding point and interval estimates for each of the combination of predictor variables
+newdata = data.frame(PopDens=c(900,10,10000), PercHS =c(75,80,72), PerCapInc=c(11000,19000,35000))
+p.pred = predict(cdi4.lm, interval = "prediction", newdata = newdata)
+c.pred = predict(cdi4.lm, interval = "confidence", newdata = newdata)
+# Predicted Values
+head(p.pred)
+head(c.pred)
+write.table(p.pred, file = file.choose(), sep = "\t",
+            row.names = TRUE, col.names = NA)
+write.table(c.pred, file = file.choose(), sep = "\t",
+            row.names = TRUE, col.names = NA)
+summary(cdi4.df$PerThousCrimes)
+summary(cdi4.df$PopDens)
+summary(cdi4.df$PercHS)
+summary(cdi4.df$PerCapInc)
+###################################################################################################
+#C12
+plot(cooks.distance(cdi4.lm))
+cdiDens.lm = lm(PerThousCrimes~PerCapInc+PercHS, data = cdi4.df)
+summary(cdiDens.lm)
+cdiCap.lm = lm(PerThousCrimes~PopDens+PercHS, data = cdi4.df)
+summary(cdiCap.lm)
+cdiHS.lm = lm(PerThousCrimes~PerCapInc+PopDens, data = cdi4.df)
+summary(cdiHS.lm)
